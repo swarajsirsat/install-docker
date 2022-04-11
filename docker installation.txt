@@ -1,0 +1,83 @@
+# docker
+
+sudo hostnamectl set-hostname docker 
+sudo su 
+apt update -y
+apt install curl -y
+curl -SSL https://get.docker.com/ | sh
+service docker status 
+usermod -aG docker ubuntu  #To avoid using sudo every time before docker
+commands, add user ubuntu to the docker group by using the following command
+# Note: To make this work, log out of the EC2 instance and login 
+again.
+
+docker --version 
+
+# Create your first docker container from the image hello-world using docker run 
+command and verify the docker installation is proper 
+
+docker run hello-world 
+
+
+1. Pull the ubuntu:latest image from the DockerHub public registry using docker
+pull command
+
+docker pull ubuntu 
+docker image ls 
+docker run -it --name ct1 ubuntu 
+touch f1 f2 f3
+ls
+
+
+2. Exit from the container by using exit command to switch back to Docker Host
+and check for running containers using docker ps command, you will not see any
+running containers. Check docker ps -a command you will see both containers
+are in Exited state
+exit 
+docker ps 
+docker ps -a 
+
+3. Create another docker container named ct2 using the ubuntu image
+ 
+docker run -it --name ct2 ubuntu 
+ docker ps 
+
+4. Use the docker exec -it command to get a second shell in the container 
+docker exec -it < container id/name > /bin/sh 
+exit 
+docker ps
+
+5. Use the docker attach command to enter the primary shell of the container
+docker attach < container id/name > 
+exit 
+docker ps 
+docker ps -a
+
+6. Create and start an apache application container from image httpd in
+detached mode using docker run -d command, use -p option to bind the host
+port to container port. In this example we will bind port number 80 of the
+Docker Host (LHS) to map to port number 80 (RHS) of the container using -p
+80:80. Notice that we are not going inside container as we are not using
+interactive mode, the container will be running in the background if use d flag
+
+docker run -d -p 80:80 httpd 
+7. Use the command docker exec -it to get back to the shell of the container.
+docker exec -it < container id/name > /bin/bash
+
+8.Apply kill command on the primary process of the container (PID 1). The
+container will be exited as the primary process got exited, verify the status is
+exited using docker ps -a command
+
+kill 1 
+docker ps -a 
+
+9. Clean up of resources created in this lab.
+
+# docker container stop < container id/name > 
+# docker container rm < container id/name > 
+# docker image rm < image id > 
+
+
+
+
+

@@ -1,0 +1,77 @@
+1. Run the following command to pull httpd image from Docker Hub
+# docker pull httpd 
+2. Check the pulled httpd image by running below command
+# docker image ls 
+3. Check the httpd image layers using docker image history
+# docker image history httpd 
+4. Create docker container read write layer using below command of the above pulled
+image
+# docker container create httpd 
+5. Check the status of the container just created, the status should be created
+# docker container ls -a 
+6. Start the container using below command
+# docker container start < container id/name > 
+7. Check the status of the started container as
+# docker container ls 
+8. Stop the container using below command
+# docker container stop < container id/Name > 
+9. Verify the status of the container is
+# docker container ls -a 
+10. Again, start the container by running below command
+# docker container start < container id/Name > 
+11. Pause the running container
+# docker container pause < container id/Name > 
+12. Check the status of container as
+# docker container ls -a 
+13. Now unpause the container
+# docker container unpause < container id/Name > 
+14. Check the status of container after unpause
+# docker container ls -a 
+15. Now enter the container using exec command as shown below
+# docker exec -it < container id/name > bash 
+16. Go to htdocs directory inside the container terminal
+# cd htdocs 
+17. Run apt update command inside the container.
+# apt update 
+18. Install wget package inside the container using apt install
+# apt install wget -y 
+19. Now remove default index.html page and download the custom index.html using below
+command
+# rm index.html 
+# wget files.cloudthat.training/devops/dockeressentials/index.html 
+20. Exit from the container and run docker commit command to create an image of the
+modified container, name the new image as myhttpd:version1
+# exit 
+# docker commit < container id/name > myhttpd:version1 
+21. After running the commit verify the new image is present in the docker host local image
+cache.
+# docker image ls 
+22. Now use your image and create new container in detached mode. Use publish option
+of the docker to see the webpage given by container from Docker Host.
+# docker run -d -p 8080:80 myhttpd:version1 
+23. Run a curl command with your Public IP of your EC2 instance. You need to see the HTML
+page
+# curl < public IP>:8080 
+24. List the running docker containers
+# docker container ls 
+25. Check the logs from your container using docker logs command
+# docker logs < container id/name > 
+26. Check the metrics consumed by your container using docker stats command, Press
+Ctrl+C to exit
+# docker stats < container id/name > 
+27. List the docker containers and make a note of your container
+# docker container ls 
+28. Stop the running containers by using below command
+# docker stop < container id/name > 
+29. Delete the stopped containers completely
+# docker container rm < container id/name > 
+30. List all the images present in Docker Host and make note of image id
+# docker image ls 
+31. Delete the docker images by using below command
+# docker image rm < image id/name > < image id/name > 
+32. Execute the below command to make sure all the images are deleted
+# docker image ls 
+# docker image ls -a 
+
+www.cloudthat.com
+App
