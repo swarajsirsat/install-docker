@@ -72,6 +72,4 @@ Ctrl+C to exit
 32. Execute the below command to make sure all the images are deleted
 # docker image ls 
 # docker image ls -a 
-
-www.cloudthat.com
-App
+#docker
