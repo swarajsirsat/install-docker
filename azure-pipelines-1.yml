@@ -16,10 +16,10 @@ steps:
   displayName: 'install node.js'
 
 
-- script: |
-    sudo apt-get install npm
-    sudo npm run build
-  displayName: 'npm install and build'
+# - script: |
+#     sudo apt-get install npm
+#     sudo npm run build
+#   displayName: 'npm install and build'
 
 - task: SnykSecurityScan@1
   inputs:
