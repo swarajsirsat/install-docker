@@ -17,8 +17,8 @@ steps:
 
 
 - script: |
-    npm install
-    npm run build
+    sudo apt-get install npm
+    sudo npm run build
   displayName: 'npm install and build'
 
 - task: SnykSecurityScan@1
