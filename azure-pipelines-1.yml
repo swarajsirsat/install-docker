@@ -13,9 +13,9 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
-    displayName: 'install node.js'
+  displayName: 'install node.js'
 
-steps:
+
 - script: |
     npm install
     npm run build
@@ -29,7 +29,3 @@ steps:
     failOnIssues: true
     projectName: 'install-docker'
     organization: '415d81f1-388d-4f85-9344-298a837e88c1'
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
