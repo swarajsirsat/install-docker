@@ -1,5 +1,5 @@
 1. Run the following command to pull httpd image from Docker Hub
-# docker pull httpd 
+# docker pull httpd ----
 2. Check the pulled httpd image by running below command
 # docker image ls 
 3. Check the httpd image layers using docker image history
